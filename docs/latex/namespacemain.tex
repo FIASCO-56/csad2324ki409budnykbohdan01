@@ -1,0 +1,240 @@
+\doxysection{main Namespace Reference}
+\hypertarget{namespacemain}{}\label{namespacemain}\index{main@{main}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacemain_ad83d9f7558fa374eee0c388536e2ae69}{setup\+\_\+serial\+\_\+port}} ()
+\begin{DoxyCompactList}\small\item\em Sets up the serial port for communication. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacemain_aff04ca38a49b8a0edd2a7d8d7ea11e9f}{send\+\_\+message}} (message, \mbox{\hyperlink{namespacemain_af0ddfa992c59910c3fdc03d171562f73}{ser}})
+\begin{DoxyCompactList}\small\item\em Sends a message through the serial port. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacemain_abaab7fd99a7f4c1c0899e278b975c29f}{receive\+\_\+message}} (\mbox{\hyperlink{namespacemain_af0ddfa992c59910c3fdc03d171562f73}{ser}})
+\begin{DoxyCompactList}\small\item\em Receives a single message from the serial port. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacemain_afd2ff425ab3c0093eaa918ff59e8f575}{receive\+\_\+multiple\+\_\+messages}} (\mbox{\hyperlink{namespacemain_af0ddfa992c59910c3fdc03d171562f73}{ser}}, count)
+\begin{DoxyCompactList}\small\item\em Receives multiple messages from the serial port. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacemain_a862704b116e100ced90f0e29ba4ef401}{user\+\_\+input\+\_\+thread}} (\mbox{\hyperlink{namespacemain_af0ddfa992c59910c3fdc03d171562f73}{ser}})
+\begin{DoxyCompactList}\small\item\em Handles user input in a separate thread. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacemain_a7d32896e1c4005214ef4d48197ce575b}{monitor\+\_\+incoming\+\_\+messages}} (\mbox{\hyperlink{namespacemain_af0ddfa992c59910c3fdc03d171562f73}{ser}})
+\begin{DoxyCompactList}\small\item\em Monitors incoming messages from the serial port. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacemain_a7aadaa184c3dd26efc36909fa306b8e2}{save\+\_\+game\+\_\+config}} (message)
+\begin{DoxyCompactList}\small\item\em Saves a game configuration message to an XML file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacemain_ab31c97de048c41d090433341bd913d43}{load\+\_\+game\+\_\+config}} (file\+\_\+path, \mbox{\hyperlink{namespacemain_af0ddfa992c59910c3fdc03d171562f73}{ser}})
+\begin{DoxyCompactList}\small\item\em Loads a game configuration from an XML file and sends it through the serial port. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+str \mbox{\hyperlink{namespacemain_afefe34c5fb154acb0b5238979df4d09e}{CONFIG\+\_\+\+FILE}} = \textquotesingle{}config/game\+\_\+config.\+xml\textquotesingle{}
+\item 
+\mbox{\hyperlink{namespacemain_af0ddfa992c59910c3fdc03d171562f73}{ser}} = \mbox{\hyperlink{namespacemain_ad83d9f7558fa374eee0c388536e2ae69}{setup\+\_\+serial\+\_\+port}}()
+\item 
+bool \mbox{\hyperlink{namespacemain_ac374d201da6068677320b0eaf35d1404}{can\+\_\+input}} = True
+\item 
+bool \mbox{\hyperlink{namespacemain_afe3247555051d316eb5c49679ac28c66}{exit\+\_\+program}} = False
+\item 
+\mbox{\hyperlink{namespacemain_a83307fce1cd0496d684a3b920d1e9976}{last\+\_\+received\+\_\+time}} = time.\+time()
+\item 
+\mbox{\hyperlink{namespacemain_a7a716e67103ba3211a4e0eac4b5e3430}{target}}
+\item 
+\mbox{\hyperlink{namespacemain_a96c1b07550ef798720d8504ce8d2a52f}{monitor\+\_\+incoming\+\_\+messages}}
+\item 
+\mbox{\hyperlink{namespacemain_a10926d7b7053badc9647defe0abb8adc}{args}}
+\item 
+\mbox{\hyperlink{namespacemain_a092c6a8193147833d5a33663dc4188a1}{daemon}}
+\item 
+\mbox{\hyperlink{namespacemain_a80a3a00ad4f369c8724763841f2a05b6}{user\+\_\+input\+\_\+thread}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacemain_ab31c97de048c41d090433341bd913d43}\index{main@{main}!load\_game\_config@{load\_game\_config}}
+\index{load\_game\_config@{load\_game\_config}!main@{main}}
+\doxysubsubsection{\texorpdfstring{load\_game\_config()}{load\_game\_config()}}
+{\footnotesize\ttfamily \label{namespacemain_ab31c97de048c41d090433341bd913d43} 
+main.\+load\+\_\+game\+\_\+config (\begin{DoxyParamCaption}\item[{}]{file\+\_\+path}{, }\item[{}]{ser}{}\end{DoxyParamCaption})}
+
+
+
+Loads a game configuration from an XML file and sends it through the serial port. 
+
+Parses the XML file, extracts game settings, and sends them as an XML string. 
+\begin{DoxyParams}{Parameters}
+{\em file\+\_\+path} & The path to the XML configuration file. \\
+\hline
+{\em ser} & The serial port object to send the configuration through. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespacemain_a7d32896e1c4005214ef4d48197ce575b}\index{main@{main}!monitor\_incoming\_messages@{monitor\_incoming\_messages}}
+\index{monitor\_incoming\_messages@{monitor\_incoming\_messages}!main@{main}}
+\doxysubsubsection{\texorpdfstring{monitor\_incoming\_messages()}{monitor\_incoming\_messages()}}
+{\footnotesize\ttfamily \label{namespacemain_a7d32896e1c4005214ef4d48197ce575b} 
+main.\+monitor\+\_\+incoming\+\_\+messages (\begin{DoxyParamCaption}\item[{}]{ser}{}\end{DoxyParamCaption})}
+
+
+
+Monitors incoming messages from the serial port. 
+
+Continuously reads messages, updates the last received time, and saves XML configurations. 
+\begin{DoxyParams}{Parameters}
+{\em ser} & The serial port object to monitor. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespacemain_abaab7fd99a7f4c1c0899e278b975c29f}\index{main@{main}!receive\_message@{receive\_message}}
+\index{receive\_message@{receive\_message}!main@{main}}
+\doxysubsubsection{\texorpdfstring{receive\_message()}{receive\_message()}}
+{\footnotesize\ttfamily \label{namespacemain_abaab7fd99a7f4c1c0899e278b975c29f} 
+main.\+receive\+\_\+message (\begin{DoxyParamCaption}\item[{}]{ser}{}\end{DoxyParamCaption})}
+
+
+
+Receives a single message from the serial port. 
+
+Reads a line of input from the serial port, decodes it to UTF-\/8, and strips whitespace. 
+\begin{DoxyParams}{Parameters}
+{\em ser} & The serial port object to read from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The received string message or None if an error occurs. 
+\end{DoxyReturn}
+\Hypertarget{namespacemain_afd2ff425ab3c0093eaa918ff59e8f575}\index{main@{main}!receive\_multiple\_messages@{receive\_multiple\_messages}}
+\index{receive\_multiple\_messages@{receive\_multiple\_messages}!main@{main}}
+\doxysubsubsection{\texorpdfstring{receive\_multiple\_messages()}{receive\_multiple\_messages()}}
+{\footnotesize\ttfamily \label{namespacemain_afd2ff425ab3c0093eaa918ff59e8f575} 
+main.\+receive\+\_\+multiple\+\_\+messages (\begin{DoxyParamCaption}\item[{}]{ser}{, }\item[{}]{count}{}\end{DoxyParamCaption})}
+
+
+
+Receives multiple messages from the serial port. 
+
+Reads a specified number of messages from the serial port and stores them in a list. 
+\begin{DoxyParams}{Parameters}
+{\em ser} & The serial port object to read from. \\
+\hline
+{\em count} & The number of messages to receive. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of received messages. 
+\end{DoxyReturn}
+\Hypertarget{namespacemain_a7aadaa184c3dd26efc36909fa306b8e2}\index{main@{main}!save\_game\_config@{save\_game\_config}}
+\index{save\_game\_config@{save\_game\_config}!main@{main}}
+\doxysubsubsection{\texorpdfstring{save\_game\_config()}{save\_game\_config()}}
+{\footnotesize\ttfamily \label{namespacemain_a7aadaa184c3dd26efc36909fa306b8e2} 
+main.\+save\+\_\+game\+\_\+config (\begin{DoxyParamCaption}\item[{}]{message}{}\end{DoxyParamCaption})}
+
+
+
+Saves a game configuration message to an XML file. 
+
+Writes the received XML message to a predefined file location. 
+\begin{DoxyParams}{Parameters}
+{\em message} & The XML string to save. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespacemain_aff04ca38a49b8a0edd2a7d8d7ea11e9f}\index{main@{main}!send\_message@{send\_message}}
+\index{send\_message@{send\_message}!main@{main}}
+\doxysubsubsection{\texorpdfstring{send\_message()}{send\_message()}}
+{\footnotesize\ttfamily \label{namespacemain_aff04ca38a49b8a0edd2a7d8d7ea11e9f} 
+main.\+send\+\_\+message (\begin{DoxyParamCaption}\item[{}]{message}{, }\item[{}]{ser}{}\end{DoxyParamCaption})}
+
+
+
+Sends a message through the serial port. 
+
+Encodes the message as bytes and writes it to the serial port. 
+\begin{DoxyParams}{Parameters}
+{\em message} & The string message to send. \\
+\hline
+{\em ser} & The serial port object to send the message through. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespacemain_ad83d9f7558fa374eee0c388536e2ae69}\index{main@{main}!setup\_serial\_port@{setup\_serial\_port}}
+\index{setup\_serial\_port@{setup\_serial\_port}!main@{main}}
+\doxysubsubsection{\texorpdfstring{setup\_serial\_port()}{setup\_serial\_port()}}
+{\footnotesize\ttfamily \label{namespacemain_ad83d9f7558fa374eee0c388536e2ae69} 
+main.\+setup\+\_\+serial\+\_\+port (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Sets up the serial port for communication. 
+
+Prompts the user to enter the serial port name and configures the port with a baud rate of 9600 and a timeout of 1 second. \begin{DoxyReturn}{Returns}
+Configured serial.\+Serial object. 
+\end{DoxyReturn}
+\Hypertarget{namespacemain_a862704b116e100ced90f0e29ba4ef401}\index{main@{main}!user\_input\_thread@{user\_input\_thread}}
+\index{user\_input\_thread@{user\_input\_thread}!main@{main}}
+\doxysubsubsection{\texorpdfstring{user\_input\_thread()}{user\_input\_thread()}}
+{\footnotesize\ttfamily \label{namespacemain_a862704b116e100ced90f0e29ba4ef401} 
+main.\+user\+\_\+input\+\_\+thread (\begin{DoxyParamCaption}\item[{}]{ser}{}\end{DoxyParamCaption})}
+
+
+
+Handles user input in a separate thread. 
+
+Reads commands from the user, processes \textquotesingle{}exit\textquotesingle{} and \textquotesingle{}load\textquotesingle{} commands, and sends messages to the serial port. 
+\begin{DoxyParams}{Parameters}
+{\em ser} & The serial port object to communicate with. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacemain_a10926d7b7053badc9647defe0abb8adc}\index{main@{main}!args@{args}}
+\index{args@{args}!main@{main}}
+\doxysubsubsection{\texorpdfstring{args}{args}}
+{\footnotesize\ttfamily \label{namespacemain_a10926d7b7053badc9647defe0abb8adc} 
+main.\+args}
+
+\Hypertarget{namespacemain_ac374d201da6068677320b0eaf35d1404}\index{main@{main}!can\_input@{can\_input}}
+\index{can\_input@{can\_input}!main@{main}}
+\doxysubsubsection{\texorpdfstring{can\_input}{can\_input}}
+{\footnotesize\ttfamily \label{namespacemain_ac374d201da6068677320b0eaf35d1404} 
+bool main.\+can\+\_\+input = True}
+
+\Hypertarget{namespacemain_afefe34c5fb154acb0b5238979df4d09e}\index{main@{main}!CONFIG\_FILE@{CONFIG\_FILE}}
+\index{CONFIG\_FILE@{CONFIG\_FILE}!main@{main}}
+\doxysubsubsection{\texorpdfstring{CONFIG\_FILE}{CONFIG\_FILE}}
+{\footnotesize\ttfamily \label{namespacemain_afefe34c5fb154acb0b5238979df4d09e} 
+str main.\+CONFIG\+\_\+\+FILE = \textquotesingle{}config/game\+\_\+config.\+xml\textquotesingle{}}
+
+\Hypertarget{namespacemain_a092c6a8193147833d5a33663dc4188a1}\index{main@{main}!daemon@{daemon}}
+\index{daemon@{daemon}!main@{main}}
+\doxysubsubsection{\texorpdfstring{daemon}{daemon}}
+{\footnotesize\ttfamily \label{namespacemain_a092c6a8193147833d5a33663dc4188a1} 
+main.\+daemon}
+
+\Hypertarget{namespacemain_afe3247555051d316eb5c49679ac28c66}\index{main@{main}!exit\_program@{exit\_program}}
+\index{exit\_program@{exit\_program}!main@{main}}
+\doxysubsubsection{\texorpdfstring{exit\_program}{exit\_program}}
+{\footnotesize\ttfamily \label{namespacemain_afe3247555051d316eb5c49679ac28c66} 
+bool main.\+exit\+\_\+program = False}
+
+\Hypertarget{namespacemain_a83307fce1cd0496d684a3b920d1e9976}\index{main@{main}!last\_received\_time@{last\_received\_time}}
+\index{last\_received\_time@{last\_received\_time}!main@{main}}
+\doxysubsubsection{\texorpdfstring{last\_received\_time}{last\_received\_time}}
+{\footnotesize\ttfamily \label{namespacemain_a83307fce1cd0496d684a3b920d1e9976} 
+main.\+last\+\_\+received\+\_\+time = time.\+time()}
+
+\Hypertarget{namespacemain_a96c1b07550ef798720d8504ce8d2a52f}\index{main@{main}!monitor\_incoming\_messages@{monitor\_incoming\_messages}}
+\index{monitor\_incoming\_messages@{monitor\_incoming\_messages}!main@{main}}
+\doxysubsubsection{\texorpdfstring{monitor\_incoming\_messages}{monitor\_incoming\_messages}}
+{\footnotesize\ttfamily \label{namespacemain_a96c1b07550ef798720d8504ce8d2a52f} 
+main.\+monitor\+\_\+incoming\+\_\+messages}
+
+\Hypertarget{namespacemain_af0ddfa992c59910c3fdc03d171562f73}\index{main@{main}!ser@{ser}}
+\index{ser@{ser}!main@{main}}
+\doxysubsubsection{\texorpdfstring{ser}{ser}}
+{\footnotesize\ttfamily \label{namespacemain_af0ddfa992c59910c3fdc03d171562f73} 
+main.\+ser = \mbox{\hyperlink{namespacemain_ad83d9f7558fa374eee0c388536e2ae69}{setup\+\_\+serial\+\_\+port}}()}
+
+\Hypertarget{namespacemain_a7a716e67103ba3211a4e0eac4b5e3430}\index{main@{main}!target@{target}}
+\index{target@{target}!main@{main}}
+\doxysubsubsection{\texorpdfstring{target}{target}}
+{\footnotesize\ttfamily \label{namespacemain_a7a716e67103ba3211a4e0eac4b5e3430} 
+main.\+target}
+
+\Hypertarget{namespacemain_a80a3a00ad4f369c8724763841f2a05b6}\index{main@{main}!user\_input\_thread@{user\_input\_thread}}
+\index{user\_input\_thread@{user\_input\_thread}!main@{main}}
+\doxysubsubsection{\texorpdfstring{user\_input\_thread}{user\_input\_thread}}
+{\footnotesize\ttfamily \label{namespacemain_a80a3a00ad4f369c8724763841f2a05b6} 
+main.\+user\+\_\+input\+\_\+thread}
+

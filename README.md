@@ -4,7 +4,7 @@
 This repository is intended for completing assignments for the course “Computer systems automated design”.
 
 # Task details:
-Create a simple communication schema SW(client) <-> UART <-> HW(server).
+Create doxygen documentation
 
 # How to build and run project:
 Before building and running the project, make sure you have the following installed:
@@ -15,7 +15,7 @@ Before building and running the project, make sure you have the following instal
 
 1. Clone the repository:
 
-```git clone --single-branch --branch feature/develop/Task2 https://github.com/FIASCO-56/csad2324ki409budnykbohdan01.git```
+```git clone --single-branch --branch feature/develop/task4 https://github.com/FIASCO-56/csad2324ki409budnykbohdan01.git```
 
 ```cd csad2324ki409budnykbohdan01```
 
@@ -24,6 +24,24 @@ Before building and running the project, make sure you have the following instal
 ```ci-script.bat```
 
 3. The script will prompt you to enter the serial port of the ESP32 device:
+
+# How to Use:
+
+**new** - Start a new game.
+
+**save** - Save the current game configuration as a JSON file.
+
+**load** - Load a configuration JSON file into the program.
+
+**modes 0** - Change the game mode to Man vs AI.
+
+**modes 1** - Change the game mode to Man vs Man.
+
+**modes 2** - Change the game mode to AI vs AI.
+
+# Viewing the Doxygen Documentation:
+
+To access the generated documentation, open the **index.html** file located in the **html** directory within the **docs** folder in your web browser.
 
 # Version
 v1.0
