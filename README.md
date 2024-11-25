@@ -15,7 +15,7 @@ Before building and running the project, make sure you have the following instal
 
 1. Clone the repository:
 
-```git clone --single-branch --branch feature/develop/Task2 https://github.com/FIASCO-56/csad2324ki409budnykbohdan01.git```
+```git clone --single-branch --branch feature/develop/task3 https://github.com/FIASCO-56/csad2324ki409budnykbohdan01.git```
 
 ```cd csad2324ki409budnykbohdan01```
 
