@@ -1,0 +1,522 @@
+\doxysection{src/task3.ino File Reference}
+\hypertarget{task3_8ino}{}\label{task3_8ino}\index{src/task3.ino@{src/task3.ino}}
+{\ttfamily \#include $<$Arduino.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structGameConfig}{Game\+Config}}
+\begin{DoxyCompactList}\small\item\em Structure to store game configuration settings. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{task3_8ino_ac1ade55623535db27f18b784d04aaa08}{save\+Config}} (const \mbox{\hyperlink{structGameConfig}{Game\+Config}} \&config)
+\begin{DoxyCompactList}\small\item\em Saves the game configuration to XML format. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{task3_8ino_a0e2a32b82852c397a5f1cb8061f92f57}{load\+String\+Config}} (const String \&xml, const char \texorpdfstring{$\ast$}{*}key, String \&value)
+\begin{DoxyCompactList}\small\item\em Loads a specific configuration string from an XML tag. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{task3_8ino_a1717f6350c85fb6788e0249240b43815}{load\+Config}} (String xml\+Config)
+\begin{DoxyCompactList}\small\item\em Loads game configuration from XML data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{task3_8ino_aceed22233d78b31550f7b4df667c71c4}{initialize\+Board}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the game board with empty spaces. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{task3_8ino_a8310d6d1e915cb179f834d9ca017950a}{print\+Board}} ()
+\begin{DoxyCompactList}\small\item\em Prints the current state of the game board. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{task3_8ino_a7d77f13f6262c327ac27711083d96b0f}{check\+Win}} (char player)
+\begin{DoxyCompactList}\small\item\em Checks if the specified player has won the game. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{task3_8ino_a98badcf7748478b3d0a54a6f7b7a4719}{is\+Board\+Full}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the game board is full. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{task3_8ino_a5d681c6daee039d310db97f4fd83dd56}{ai\+Move}} (char ai\+Symbol)
+\begin{DoxyCompactList}\small\item\em Executes the AI\textquotesingle{}s move for the current game. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{task3_8ino_ae14ffff8078cdec7ca9d43ba9e5014af}{block\+Opponent\+Move}} (char opponent)
+\begin{DoxyCompactList}\small\item\em Blocks the opponent\textquotesingle{}s potential winning move. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{task3_8ino_aba3e97ce068cbe5e37eb1b03d237c0b9}{is\+Winning\+Move}} (int coords1\mbox{[}2\mbox{]}, int coords2\mbox{[}2\mbox{]}, int coords3\mbox{[}2\mbox{]}, char opponent)
+\begin{DoxyCompactList}\small\item\em Determines if a move results in a winning condition. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{task3_8ino_a6d3f817c853923c71d4b408c1c8dc28a}{place\+Move}} (int coords\mbox{[}2\mbox{]}, char symbol)
+\begin{DoxyCompactList}\small\item\em Places a move on the board. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{task3_8ino_aa9ee7afa0841bcf11850148acfb7d015}{can\+Block}} (int coords1\mbox{[}2\mbox{]}, int coords2\mbox{[}2\mbox{]}, int coords3\mbox{[}2\mbox{]}, char opponent)
+\begin{DoxyCompactList}\small\item\em Checks if a block can be made for a potential win. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{task3_8ino_ad934048cce7cc23beb91ddace59491b8}{handle\+Player\+Move}} (int row, int col)
+\begin{DoxyCompactList}\small\item\em Handles the current player\textquotesingle{}s move. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{task3_8ino_ab9b73e39c9ba883d1bae37413fdef758}{handle\+AIMove}} ()
+\begin{DoxyCompactList}\small\item\em Executes the AI\textquotesingle{}s move in two-\/player mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{task3_8ino_a0c09df11a71c37d8c670270adea27f0f}{switch\+Player}} ()
+\begin{DoxyCompactList}\small\item\em Switches the turn to the next player. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{task3_8ino_aaa18c8113882f7df4da480e2130f895c}{is\+Valid\+Move}} (int row, int col)
+\begin{DoxyCompactList}\small\item\em Validates the given move coordinates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{task3_8ino_a3816bc3fa4fb46517b206727f2e1b267}{process\+Move}} (String input)
+\begin{DoxyCompactList}\small\item\em Processes the player\textquotesingle{}s move input. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{task3_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the Serial communication. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{task3_8ino_a5901170f346e94ad9e3f88c0c7275522}{initialize\+Game}} ()
+\begin{DoxyCompactList}\small\item\em Initializes a new game by setting up the board, determining the first player, and displaying initial messages. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{task3_8ino_a24ccbf1cf0f467347c1a442ce49eb67a}{check\+And\+Print\+Winner}} (char symbol)
+\begin{DoxyCompactList}\small\item\em Checks if the given player has won and prints a corresponding message. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{task3_8ino_ad4465bd2e3d246d811ba667ed595263b}{check\+And\+Print\+Draw}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the game board is full (indicating a draw) and prints a corresponding message. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{task3_8ino_a3372f41b3433aa85ca28d574ddfa857b}{process\+Human\+Vs\+AI}} ()
+\begin{DoxyCompactList}\small\item\em Processes the gameplay for a Human vs AI match. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{task3_8ino_a79d8fae70136ae34c18d5f117203af8a}{process\+AIvs\+AI}} ()
+\begin{DoxyCompactList}\small\item\em Processes the gameplay for an AI vs AI match. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{task3_8ino_a420bd28dcaaa115f46bc6aef272c75f1}{process\+Received\+Message}} (String received\+Message)
+\begin{DoxyCompactList}\small\item\em Processes a received message from Serial input and executes the appropriate game logic. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{task3_8ino_ad6612373c399e64f8fb4ecc6a3d12b5c}{handle\+Game\+Mode}} (String received\+Message)
+\begin{DoxyCompactList}\small\item\em Handles the game mode selection based on a received message. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{task3_8ino_afe461d27b9c48d5921c00d521181f12f}{loop}} ()
+\begin{DoxyCompactList}\small\item\em The main loop continuously processes incoming messages from Serial input. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+char \mbox{\hyperlink{task3_8ino_addb95bba86049086440d7527b58a5f2a}{board}} \mbox{[}3\mbox{]}\mbox{[}3\mbox{]}
+\begin{DoxyCompactList}\small\item\em Represents the game board for Tic-\/\+Tac-\/\+Toe. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{task3_8ino_a4361aa42f2e08e5ceb49425b6675f7bf}{game\+Active}} = false
+\item 
+String \mbox{\hyperlink{task3_8ino_a1257e7e1a2bc6ad2b8335444b7a839de}{player1\+Symbol}} = "{}X"{}
+\item 
+String \mbox{\hyperlink{task3_8ino_ad92674fec7f16e544d3e37f007c1c8f8}{player2\+Symbol}} = "{}O"{}
+\item 
+String \mbox{\hyperlink{task3_8ino_a73b1e9bea5f5b9f4703dddc21123110a}{current\+Player}} = "{}X"{}
+\item 
+int \mbox{\hyperlink{task3_8ino_aa535a3201e6b21c12dc05f4fa9a3e7c2}{game\+Mode}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{task3_8ino_a5d681c6daee039d310db97f4fd83dd56}\index{task3.ino@{task3.ino}!aiMove@{aiMove}}
+\index{aiMove@{aiMove}!task3.ino@{task3.ino}}
+\doxysubsubsection{\texorpdfstring{aiMove()}{aiMove()}}
+{\footnotesize\ttfamily \label{task3_8ino_a5d681c6daee039d310db97f4fd83dd56} 
+void ai\+Move (\begin{DoxyParamCaption}\item[{char}]{ai\+Symbol}{}\end{DoxyParamCaption})}
+
+
+
+Executes the AI\textquotesingle{}s move for the current game. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ai\+Symbol} & The symbol used by the AI (\textquotesingle{}X\textquotesingle{} or \textquotesingle{}O\textquotesingle{}). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{task3_8ino_ae14ffff8078cdec7ca9d43ba9e5014af}\index{task3.ino@{task3.ino}!blockOpponentMove@{blockOpponentMove}}
+\index{blockOpponentMove@{blockOpponentMove}!task3.ino@{task3.ino}}
+\doxysubsubsection{\texorpdfstring{blockOpponentMove()}{blockOpponentMove()}}
+{\footnotesize\ttfamily \label{task3_8ino_ae14ffff8078cdec7ca9d43ba9e5014af} 
+bool block\+Opponent\+Move (\begin{DoxyParamCaption}\item[{char}]{opponent}{}\end{DoxyParamCaption})}
+
+
+
+Blocks the opponent\textquotesingle{}s potential winning move. 
+
+This function checks rows, columns, and diagonals to determine if the opponent has a potential winning move. If such a move exists, it places the AI\textquotesingle{}s symbol to block it.
+
+
+\begin{DoxyParams}{Parameters}
+{\em opponent} & The symbol of the opponent (\textquotesingle{}X\textquotesingle{} or \textquotesingle{}O\textquotesingle{}). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if a blocking move was made, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{task3_8ino_aa9ee7afa0841bcf11850148acfb7d015}\index{task3.ino@{task3.ino}!canBlock@{canBlock}}
+\index{canBlock@{canBlock}!task3.ino@{task3.ino}}
+\doxysubsubsection{\texorpdfstring{canBlock()}{canBlock()}}
+{\footnotesize\ttfamily \label{task3_8ino_aa9ee7afa0841bcf11850148acfb7d015} 
+bool can\+Block (\begin{DoxyParamCaption}\item[{int}]{coords1}{\mbox{[}2\mbox{]}, }\item[{int}]{coords2}{\mbox{[}2\mbox{]}, }\item[{int}]{coords3}{\mbox{[}2\mbox{]}, }\item[{char}]{opponent}{}\end{DoxyParamCaption})}
+
+
+
+Checks if a block can be made for a potential win. 
+
+Evaluates if the opponent\textquotesingle{}s potential winning move can be blocked by placing the AI\textquotesingle{}s symbol in the appropriate position.
+
+
+\begin{DoxyParams}{Parameters}
+{\em coords1} & The first coordinate of the potential win. \\
+\hline
+{\em coords2} & The second coordinate of the potential win. \\
+\hline
+{\em coords3} & The third coordinate of the potential win. \\
+\hline
+{\em opponent} & The symbol of the opponent. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if a block was made, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{task3_8ino_ad4465bd2e3d246d811ba667ed595263b}\index{task3.ino@{task3.ino}!checkAndPrintDraw@{checkAndPrintDraw}}
+\index{checkAndPrintDraw@{checkAndPrintDraw}!task3.ino@{task3.ino}}
+\doxysubsubsection{\texorpdfstring{checkAndPrintDraw()}{checkAndPrintDraw()}}
+{\footnotesize\ttfamily \label{task3_8ino_ad4465bd2e3d246d811ba667ed595263b} 
+bool check\+And\+Print\+Draw (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Checks if the game board is full (indicating a draw) and prints a corresponding message. 
+
+\begin{DoxyReturn}{Returns}
+true if the game is a draw, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{task3_8ino_a24ccbf1cf0f467347c1a442ce49eb67a}\index{task3.ino@{task3.ino}!checkAndPrintWinner@{checkAndPrintWinner}}
+\index{checkAndPrintWinner@{checkAndPrintWinner}!task3.ino@{task3.ino}}
+\doxysubsubsection{\texorpdfstring{checkAndPrintWinner()}{checkAndPrintWinner()}}
+{\footnotesize\ttfamily \label{task3_8ino_a24ccbf1cf0f467347c1a442ce49eb67a} 
+bool check\+And\+Print\+Winner (\begin{DoxyParamCaption}\item[{char}]{symbol}{}\end{DoxyParamCaption})}
+
+
+
+Checks if the given player has won and prints a corresponding message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em symbol} & The symbol of the player (\textquotesingle{}X\textquotesingle{} or \textquotesingle{}O\textquotesingle{}) to check for a win. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the player has won, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{task3_8ino_a7d77f13f6262c327ac27711083d96b0f}\index{task3.ino@{task3.ino}!checkWin@{checkWin}}
+\index{checkWin@{checkWin}!task3.ino@{task3.ino}}
+\doxysubsubsection{\texorpdfstring{checkWin()}{checkWin()}}
+{\footnotesize\ttfamily \label{task3_8ino_a7d77f13f6262c327ac27711083d96b0f} 
+bool check\+Win (\begin{DoxyParamCaption}\item[{char}]{player}{}\end{DoxyParamCaption})}
+
+
+
+Checks if the specified player has won the game. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The player\textquotesingle{}s symbol (\textquotesingle{}X\textquotesingle{} or \textquotesingle{}O\textquotesingle{}). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the player has won, otherwise false. 
+\end{DoxyReturn}
+\Hypertarget{task3_8ino_ab9b73e39c9ba883d1bae37413fdef758}\index{task3.ino@{task3.ino}!handleAIMove@{handleAIMove}}
+\index{handleAIMove@{handleAIMove}!task3.ino@{task3.ino}}
+\doxysubsubsection{\texorpdfstring{handleAIMove()}{handleAIMove()}}
+{\footnotesize\ttfamily \label{task3_8ino_ab9b73e39c9ba883d1bae37413fdef758} 
+void handle\+AIMove (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Executes the AI\textquotesingle{}s move in two-\/player mode. 
+
+The AI will make moves for both players, checking for win conditions after each move. \Hypertarget{task3_8ino_ad6612373c399e64f8fb4ecc6a3d12b5c}\index{task3.ino@{task3.ino}!handleGameMode@{handleGameMode}}
+\index{handleGameMode@{handleGameMode}!task3.ino@{task3.ino}}
+\doxysubsubsection{\texorpdfstring{handleGameMode()}{handleGameMode()}}
+{\footnotesize\ttfamily \label{task3_8ino_ad6612373c399e64f8fb4ecc6a3d12b5c} 
+void handle\+Game\+Mode (\begin{DoxyParamCaption}\item[{String}]{received\+Message}{}\end{DoxyParamCaption})}
+
+
+
+Handles the game mode selection based on a received message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em received\+Message} & The message specifying the game mode. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{task3_8ino_ad934048cce7cc23beb91ddace59491b8}\index{task3.ino@{task3.ino}!handlePlayerMove@{handlePlayerMove}}
+\index{handlePlayerMove@{handlePlayerMove}!task3.ino@{task3.ino}}
+\doxysubsubsection{\texorpdfstring{handlePlayerMove()}{handlePlayerMove()}}
+{\footnotesize\ttfamily \label{task3_8ino_ad934048cce7cc23beb91ddace59491b8} 
+void handle\+Player\+Move (\begin{DoxyParamCaption}\item[{int}]{row}{, }\item[{int}]{col}{}\end{DoxyParamCaption})}
+
+
+
+Handles the current player\textquotesingle{}s move. 
+
+Updates the board with the player\textquotesingle{}s move, prints the board, checks for win or draw conditions, and ends the game if needed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & The row index of the move. \\
+\hline
+{\em col} & The column index of the move. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{task3_8ino_aceed22233d78b31550f7b4df667c71c4}\index{task3.ino@{task3.ino}!initializeBoard@{initializeBoard}}
+\index{initializeBoard@{initializeBoard}!task3.ino@{task3.ino}}
+\doxysubsubsection{\texorpdfstring{initializeBoard()}{initializeBoard()}}
+{\footnotesize\ttfamily \label{task3_8ino_aceed22233d78b31550f7b4df667c71c4} 
+void initialize\+Board (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the game board with empty spaces. 
+
+\Hypertarget{task3_8ino_a5901170f346e94ad9e3f88c0c7275522}\index{task3.ino@{task3.ino}!initializeGame@{initializeGame}}
+\index{initializeGame@{initializeGame}!task3.ino@{task3.ino}}
+\doxysubsubsection{\texorpdfstring{initializeGame()}{initializeGame()}}
+{\footnotesize\ttfamily \label{task3_8ino_a5901170f346e94ad9e3f88c0c7275522} 
+void initialize\+Game (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes a new game by setting up the board, determining the first player, and displaying initial messages. 
+
+\Hypertarget{task3_8ino_a98badcf7748478b3d0a54a6f7b7a4719}\index{task3.ino@{task3.ino}!isBoardFull@{isBoardFull}}
+\index{isBoardFull@{isBoardFull}!task3.ino@{task3.ino}}
+\doxysubsubsection{\texorpdfstring{isBoardFull()}{isBoardFull()}}
+{\footnotesize\ttfamily \label{task3_8ino_a98badcf7748478b3d0a54a6f7b7a4719} 
+bool is\+Board\+Full (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Checks if the game board is full. 
+
+\begin{DoxyReturn}{Returns}
+True if the board is full, otherwise false. 
+\end{DoxyReturn}
+\Hypertarget{task3_8ino_aaa18c8113882f7df4da480e2130f895c}\index{task3.ino@{task3.ino}!isValidMove@{isValidMove}}
+\index{isValidMove@{isValidMove}!task3.ino@{task3.ino}}
+\doxysubsubsection{\texorpdfstring{isValidMove()}{isValidMove()}}
+{\footnotesize\ttfamily \label{task3_8ino_aaa18c8113882f7df4da480e2130f895c} 
+bool is\+Valid\+Move (\begin{DoxyParamCaption}\item[{int}]{row}{, }\item[{int}]{col}{}\end{DoxyParamCaption})}
+
+
+
+Validates the given move coordinates. 
+
+Checks if the move is within bounds and the cell is empty.
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & The row index of the move. \\
+\hline
+{\em col} & The column index of the move. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the move is valid, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{task3_8ino_aba3e97ce068cbe5e37eb1b03d237c0b9}\index{task3.ino@{task3.ino}!isWinningMove@{isWinningMove}}
+\index{isWinningMove@{isWinningMove}!task3.ino@{task3.ino}}
+\doxysubsubsection{\texorpdfstring{isWinningMove()}{isWinningMove()}}
+{\footnotesize\ttfamily \label{task3_8ino_aba3e97ce068cbe5e37eb1b03d237c0b9} 
+bool is\+Winning\+Move (\begin{DoxyParamCaption}\item[{int}]{coords1}{\mbox{[}2\mbox{]}, }\item[{int}]{coords2}{\mbox{[}2\mbox{]}, }\item[{int}]{coords3}{\mbox{[}2\mbox{]}, }\item[{char}]{opponent}{}\end{DoxyParamCaption})}
+
+
+
+Determines if a move results in a winning condition. 
+
+Checks whether the combination of three coordinates forms a winning move for the specified opponent symbol.
+
+
+\begin{DoxyParams}{Parameters}
+{\em coords1} & The first coordinate. \\
+\hline
+{\em coords2} & The second coordinate. \\
+\hline
+{\em coords3} & The third coordinate. \\
+\hline
+{\em opponent} & The symbol of the opponent. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the move results in a win, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{task3_8ino_a1717f6350c85fb6788e0249240b43815}\index{task3.ino@{task3.ino}!loadConfig@{loadConfig}}
+\index{loadConfig@{loadConfig}!task3.ino@{task3.ino}}
+\doxysubsubsection{\texorpdfstring{loadConfig()}{loadConfig()}}
+{\footnotesize\ttfamily \label{task3_8ino_a1717f6350c85fb6788e0249240b43815} 
+void load\+Config (\begin{DoxyParamCaption}\item[{String}]{xml\+Config}{}\end{DoxyParamCaption})}
+
+
+
+Loads game configuration from XML data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em xml\+Config} & The XML configuration string. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{task3_8ino_a0e2a32b82852c397a5f1cb8061f92f57}\index{task3.ino@{task3.ino}!loadStringConfig@{loadStringConfig}}
+\index{loadStringConfig@{loadStringConfig}!task3.ino@{task3.ino}}
+\doxysubsubsection{\texorpdfstring{loadStringConfig()}{loadStringConfig()}}
+{\footnotesize\ttfamily \label{task3_8ino_a0e2a32b82852c397a5f1cb8061f92f57} 
+bool load\+String\+Config (\begin{DoxyParamCaption}\item[{const String \&}]{xml}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{key}{, }\item[{String \&}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Loads a specific configuration string from an XML tag. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em xml} & The XML data. \\
+\hline
+{\em key} & The key to extract data for. \\
+\hline
+{\em value} & The extracted value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the key is found, otherwise false. 
+\end{DoxyReturn}
+\Hypertarget{task3_8ino_afe461d27b9c48d5921c00d521181f12f}\index{task3.ino@{task3.ino}!loop@{loop}}
+\index{loop@{loop}!task3.ino@{task3.ino}}
+\doxysubsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily \label{task3_8ino_afe461d27b9c48d5921c00d521181f12f} 
+void loop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+The main loop continuously processes incoming messages from Serial input. 
+
+\Hypertarget{task3_8ino_a6d3f817c853923c71d4b408c1c8dc28a}\index{task3.ino@{task3.ino}!placeMove@{placeMove}}
+\index{placeMove@{placeMove}!task3.ino@{task3.ino}}
+\doxysubsubsection{\texorpdfstring{placeMove()}{placeMove()}}
+{\footnotesize\ttfamily \label{task3_8ino_a6d3f817c853923c71d4b408c1c8dc28a} 
+void place\+Move (\begin{DoxyParamCaption}\item[{int}]{coords}{\mbox{[}2\mbox{]}, }\item[{char}]{symbol}{}\end{DoxyParamCaption})}
+
+
+
+Places a move on the board. 
+
+Updates the board at the specified coordinates with the provided symbol and logs the move.
+
+
+\begin{DoxyParams}{Parameters}
+{\em coords} & The coordinate where the move will be placed. \\
+\hline
+{\em symbol} & The symbol to place (\textquotesingle{}X\textquotesingle{} or \textquotesingle{}O\textquotesingle{}). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{task3_8ino_a8310d6d1e915cb179f834d9ca017950a}\index{task3.ino@{task3.ino}!printBoard@{printBoard}}
+\index{printBoard@{printBoard}!task3.ino@{task3.ino}}
+\doxysubsubsection{\texorpdfstring{printBoard()}{printBoard()}}
+{\footnotesize\ttfamily \label{task3_8ino_a8310d6d1e915cb179f834d9ca017950a} 
+void print\+Board (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Prints the current state of the game board. 
+
+\Hypertarget{task3_8ino_a79d8fae70136ae34c18d5f117203af8a}\index{task3.ino@{task3.ino}!processAIvsAI@{processAIvsAI}}
+\index{processAIvsAI@{processAIvsAI}!task3.ino@{task3.ino}}
+\doxysubsubsection{\texorpdfstring{processAIvsAI()}{processAIvsAI()}}
+{\footnotesize\ttfamily \label{task3_8ino_a79d8fae70136ae34c18d5f117203af8a} 
+void process\+AIvs\+AI (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Processes the gameplay for an AI vs AI match. 
+
+\Hypertarget{task3_8ino_a3372f41b3433aa85ca28d574ddfa857b}\index{task3.ino@{task3.ino}!processHumanVsAI@{processHumanVsAI}}
+\index{processHumanVsAI@{processHumanVsAI}!task3.ino@{task3.ino}}
+\doxysubsubsection{\texorpdfstring{processHumanVsAI()}{processHumanVsAI()}}
+{\footnotesize\ttfamily \label{task3_8ino_a3372f41b3433aa85ca28d574ddfa857b} 
+void process\+Human\+Vs\+AI (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Processes the gameplay for a Human vs AI match. 
+
+\Hypertarget{task3_8ino_a3816bc3fa4fb46517b206727f2e1b267}\index{task3.ino@{task3.ino}!processMove@{processMove}}
+\index{processMove@{processMove}!task3.ino@{task3.ino}}
+\doxysubsubsection{\texorpdfstring{processMove()}{processMove()}}
+{\footnotesize\ttfamily \label{task3_8ino_a3816bc3fa4fb46517b206727f2e1b267} 
+void process\+Move (\begin{DoxyParamCaption}\item[{String}]{input}{}\end{DoxyParamCaption})}
+
+
+
+Processes the player\textquotesingle{}s move input. 
+
+Parses the input, validates the move, and executes the move if valid. Handles game states and AI moves accordingly.
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & The player\textquotesingle{}s move input in the format "{}row,col"{}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{task3_8ino_a420bd28dcaaa115f46bc6aef272c75f1}\index{task3.ino@{task3.ino}!processReceivedMessage@{processReceivedMessage}}
+\index{processReceivedMessage@{processReceivedMessage}!task3.ino@{task3.ino}}
+\doxysubsubsection{\texorpdfstring{processReceivedMessage()}{processReceivedMessage()}}
+{\footnotesize\ttfamily \label{task3_8ino_a420bd28dcaaa115f46bc6aef272c75f1} 
+void process\+Received\+Message (\begin{DoxyParamCaption}\item[{String}]{received\+Message}{}\end{DoxyParamCaption})}
+
+
+
+Processes a received message from Serial input and executes the appropriate game logic. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em received\+Message} & The message received via Serial input. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{task3_8ino_ac1ade55623535db27f18b784d04aaa08}\index{task3.ino@{task3.ino}!saveConfig@{saveConfig}}
+\index{saveConfig@{saveConfig}!task3.ino@{task3.ino}}
+\doxysubsubsection{\texorpdfstring{saveConfig()}{saveConfig()}}
+{\footnotesize\ttfamily \label{task3_8ino_ac1ade55623535db27f18b784d04aaa08} 
+void save\+Config (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structGameConfig}{Game\+Config}} \&}]{config}{}\end{DoxyParamCaption})}
+
+
+
+Saves the game configuration to XML format. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em config} & The configuration to be saved. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{task3_8ino_a4fc01d736fe50cf5b977f755b675f11d}\index{task3.ino@{task3.ino}!setup@{setup}}
+\index{setup@{setup}!task3.ino@{task3.ino}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily \label{task3_8ino_a4fc01d736fe50cf5b977f755b675f11d} 
+void setup (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the Serial communication. 
+
+\Hypertarget{task3_8ino_a0c09df11a71c37d8c670270adea27f0f}\index{task3.ino@{task3.ino}!switchPlayer@{switchPlayer}}
+\index{switchPlayer@{switchPlayer}!task3.ino@{task3.ino}}
+\doxysubsubsection{\texorpdfstring{switchPlayer()}{switchPlayer()}}
+{\footnotesize\ttfamily \label{task3_8ino_a0c09df11a71c37d8c670270adea27f0f} 
+void switch\+Player (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Switches the turn to the next player. 
+
+This function switches the current player between "{}\+X"{} and "{}\+O"{}. 
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{task3_8ino_addb95bba86049086440d7527b58a5f2a}\index{task3.ino@{task3.ino}!board@{board}}
+\index{board@{board}!task3.ino@{task3.ino}}
+\doxysubsubsection{\texorpdfstring{board}{board}}
+{\footnotesize\ttfamily \label{task3_8ino_addb95bba86049086440d7527b58a5f2a} 
+char board\mbox{[}3\mbox{]}\mbox{[}3\mbox{]}}
+
+
+
+Represents the game board for Tic-\/\+Tac-\/\+Toe. 
+
+\Hypertarget{task3_8ino_a73b1e9bea5f5b9f4703dddc21123110a}\index{task3.ino@{task3.ino}!currentPlayer@{currentPlayer}}
+\index{currentPlayer@{currentPlayer}!task3.ino@{task3.ino}}
+\doxysubsubsection{\texorpdfstring{currentPlayer}{currentPlayer}}
+{\footnotesize\ttfamily \label{task3_8ino_a73b1e9bea5f5b9f4703dddc21123110a} 
+String current\+Player = "{}X"{}}
+
+\Hypertarget{task3_8ino_a4361aa42f2e08e5ceb49425b6675f7bf}\index{task3.ino@{task3.ino}!gameActive@{gameActive}}
+\index{gameActive@{gameActive}!task3.ino@{task3.ino}}
+\doxysubsubsection{\texorpdfstring{gameActive}{gameActive}}
+{\footnotesize\ttfamily \label{task3_8ino_a4361aa42f2e08e5ceb49425b6675f7bf} 
+bool game\+Active = false}
+
+\Hypertarget{task3_8ino_aa535a3201e6b21c12dc05f4fa9a3e7c2}\index{task3.ino@{task3.ino}!gameMode@{gameMode}}
+\index{gameMode@{gameMode}!task3.ino@{task3.ino}}
+\doxysubsubsection{\texorpdfstring{gameMode}{gameMode}}
+{\footnotesize\ttfamily \label{task3_8ino_aa535a3201e6b21c12dc05f4fa9a3e7c2} 
+int game\+Mode = 0}
+
+\Hypertarget{task3_8ino_a1257e7e1a2bc6ad2b8335444b7a839de}\index{task3.ino@{task3.ino}!player1Symbol@{player1Symbol}}
+\index{player1Symbol@{player1Symbol}!task3.ino@{task3.ino}}
+\doxysubsubsection{\texorpdfstring{player1Symbol}{player1Symbol}}
+{\footnotesize\ttfamily \label{task3_8ino_a1257e7e1a2bc6ad2b8335444b7a839de} 
+String player1\+Symbol = "{}X"{}}
+
+\Hypertarget{task3_8ino_ad92674fec7f16e544d3e37f007c1c8f8}\index{task3.ino@{task3.ino}!player2Symbol@{player2Symbol}}
+\index{player2Symbol@{player2Symbol}!task3.ino@{task3.ino}}
+\doxysubsubsection{\texorpdfstring{player2Symbol}{player2Symbol}}
+{\footnotesize\ttfamily \label{task3_8ino_ad92674fec7f16e544d3e37f007c1c8f8} 
+String player2\+Symbol = "{}O"{}}
+
