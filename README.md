@@ -4,7 +4,7 @@
 This repository is intended for completing assignments for the course “Computer systems automated design”.
 
 # Task details:
-Implement Server (HW) and Client (SW) parts of game (FEF)
+Create doxygen documentation
 
 # How to build and run project:
 Before building and running the project, make sure you have the following installed:
@@ -15,7 +15,7 @@ Before building and running the project, make sure you have the following instal
 
 1. Clone the repository:
 
-```git clone --single-branch --branch feature/develop/task3 https://github.com/FIASCO-56/csad2324ki409budnykbohdan01.git```
+```git clone --single-branch --branch feature/develop/task4 https://github.com/FIASCO-56/csad2324ki409budnykbohdan01.git```
 
 ```cd csad2324ki409budnykbohdan01```
 
@@ -38,6 +38,10 @@ Before building and running the project, make sure you have the following instal
 **modes 1** - Change the game mode to Man vs Man.
 
 **modes 2** - Change the game mode to AI vs AI.
+
+# Viewing the Doxygen Documentation:
+
+To access the generated documentation, open the **index.html** file located in the **html** directory within the **docs** folder in your web browser.
 
 # Version
 v1.0

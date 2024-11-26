@@ -8,6 +8,12 @@ CONFIG_FILE = 'config/game_config.xml'
 
 
 def setup_serial_port():
+    """!
+    @brief Sets up the serial port for communication.
+    @details Prompts the user to enter the serial port name and configures the port
+             with a baud rate of 9600 and a timeout of 1 second.
+    @return Configured serial.Serial object.
+    """
     try:
         port = input("Enter the serial port (e.g., /dev/ttyUSB0 or COM3): ")
         return serial.Serial(port, 9600, timeout=1)
@@ -17,6 +23,12 @@ def setup_serial_port():
 
 
 def send_message(message, ser):
+    """!
+    @brief Sends a message through the serial port.
+    @details Encodes the message as bytes and writes it to the serial port.
+    @param message The string message to send.
+    @param ser The serial port object to send the message through.
+    """
     try:
         ser.write((message + '\n').encode())
     except serial.SerialException as e:
@@ -24,6 +36,12 @@ def send_message(message, ser):
 
 
 def receive_message(ser):
+    """!
+    @brief Receives a single message from the serial port.
+    @details Reads a line of input from the serial port, decodes it to UTF-8, and strips whitespace.
+    @param ser The serial port object to read from.
+    @return The received string message or None if an error occurs.
+    """
     try:
         received = ser.readline().decode('utf-8', errors='ignore').strip()
         if received:
@@ -35,6 +53,13 @@ def receive_message(ser):
 
 
 def receive_multiple_messages(ser, count):
+    """!
+    @brief Receives multiple messages from the serial port.
+    @details Reads a specified number of messages from the serial port and stores them in a list.
+    @param ser The serial port object to read from.
+    @param count The number of messages to receive.
+    @return A list of received messages.
+    """
     messages = []
     for _ in range(count):
         message = receive_message(ser)
@@ -44,6 +69,11 @@ def receive_multiple_messages(ser, count):
 
 
 def user_input_thread(ser):
+    """!
+    @brief Handles user input in a separate thread.
+    @details Reads commands from the user, processes 'exit' and 'load' commands, and sends messages to the serial port.
+    @param ser The serial port object to communicate with.
+    """
     global can_input
     while True:
         if can_input:
@@ -61,6 +91,11 @@ def user_input_thread(ser):
 
 
 def monitor_incoming_messages(ser):
+    """!
+    @brief Monitors incoming messages from the serial port.
+    @details Continuously reads messages, updates the last received time, and saves XML configurations.
+    @param ser The serial port object to monitor.
+    """
     global can_input
     global last_received_time
     while not exit_program:
@@ -71,10 +106,15 @@ def monitor_incoming_messages(ser):
                 can_input = True
             if received.startswith("<"):
                 print(f"Received XML: {received}")
-                save_game_config(received) 
+                save_game_config(received)
 
 
 def save_game_config(message):
+    """!
+    @brief Saves a game configuration message to an XML file.
+    @details Writes the received XML message to a predefined file location.
+    @param message The XML string to save.
+    """
     try:
         with open(CONFIG_FILE, 'w') as f:
             f.write(message)
@@ -84,6 +124,12 @@ def save_game_config(message):
 
 
 def load_game_config(file_path, ser):
+    """!
+    @brief Loads a game configuration from an XML file and sends it through the serial port.
+    @details Parses the XML file, extracts game settings, and sends them as an XML string.
+    @param file_path The path to the XML configuration file.
+    @param ser The serial port object to send the configuration through.
+    """
     try:
         if os.path.exists(file_path):
             tree = ET.parse(file_path)
@@ -111,6 +157,11 @@ def load_game_config(file_path, ser):
 
 
 if __name__ == "__main__":
+    """!
+    @brief Entry point for the serial communication program.
+    @details Sets up the serial port, starts threads for monitoring messages and handling user input, 
+             and keeps the main thread active until the program exits.
+    """
     ser = setup_serial_port()
     can_input = True
     exit_program = False
