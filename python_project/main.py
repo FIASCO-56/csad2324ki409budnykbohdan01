@@ -52,22 +52,6 @@ def receive_message(ser):
         return None
 
 
-def receive_multiple_messages(ser, count):
-    """!
-    @brief Receives multiple messages from the serial port.
-    @details Reads a specified number of messages from the serial port and stores them in a list.
-    @param ser The serial port object to read from.
-    @param count The number of messages to receive.
-    @return A list of received messages.
-    """
-    messages = []
-    for _ in range(count):
-        message = receive_message(ser)
-        if message:
-            messages.append(message)
-    return messages
-
-
 def user_input_thread(ser):
     """!
     @brief Handles user input in a separate thread.
@@ -105,7 +89,6 @@ def monitor_incoming_messages(ser):
             if not can_input:
                 can_input = True
             if received.startswith("<"):
-                print(f"Received XML: {received}")
                 save_game_config(received)
 
 
@@ -125,44 +108,35 @@ def save_game_config(message):
 
 def load_game_config(file_path, ser):
     """!
-    @brief Loads a game configuration from an XML file and sends it through the serial port.
-    @details Parses the XML file, extracts game settings, and sends them as an XML string.
-    @param file_path The path to the XML configuration file.
-    @param ser The serial port object to send the configuration through.
+    @brief Loads the game configuration from a file and sends it over serial.
+    @param file_path The path to the configuration file to load.
+    @param ser The serial.Serial object for communication.
+    @details This function reads the content of the configuration file and sends it over the serial port.
+    @exception Will print an error message if the file cannot be loaded.
     """
     try:
         if os.path.exists(file_path):
-            tree = ET.parse(file_path)
-            root = tree.getroot()
+            with open(file_path, 'r') as f:
+                xml_content = f.read()
 
-            game_mode = int(root.find("GameMode").text) if root.find("GameMode") is not None else 0
-            player1_symbol = root.find("Player1Symbol").text if root.find("Player1Symbol") is not None else "X"
-            player2_symbol = root.find("Player2Symbol").text if root.find("Player2Symbol") is not None else "O"
+            print("Loaded XML content:")
+            print(xml_content)
 
-            print(f"Game Mode: {game_mode}")
-            print(f"Player 1 Symbol: {player1_symbol}")
-            print(f"Player 2 Symbol: {player2_symbol}")
-
-            xml_message = f"<GameConfig><GameMode>{game_mode}</GameMode>"
-            xml_message += f"<Player1Symbol>{player1_symbol}</Player1Symbol>"
-            xml_message += f"<Player2Symbol>{player2_symbol}</Player2Symbol></GameConfig>"
-
-            print(xml_message)
-
-            send_message(xml_message, ser)
+            send_message(xml_content, ser)
         else:
             print("Configuration file not found. Please provide a valid path.")
     except Exception as e:
         print(f"Error loading configuration: {e}")
 
 
-if __name__ == "__main__":
+def main():
     """!
-    @brief Entry point for the serial communication program.
-    @details Sets up the serial port, starts threads for monitoring messages and handling user input, 
-             and keeps the main thread active until the program exits.
+    @brief Main function to initialize serial communication and handle threads.
+    @details This function sets up the serial communication, starts the threads for monitoring incoming messages and handling user input, and manages the program loop.
     """
+    global can_input, exit_program  # Ensure variables are accessible in tests
     ser = setup_serial_port()
+
     can_input = True
     exit_program = False
     last_received_time = time.time()
@@ -182,3 +156,6 @@ if __name__ == "__main__":
         if ser.is_open:
             print("Closing serial port...")
             ser.close()
+
+if __name__ == "__main__":
+    main()
