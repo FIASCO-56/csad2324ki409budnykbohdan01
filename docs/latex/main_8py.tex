@@ -1,0 +1,49 @@
+\doxysection{python\+\_\+project/main.py File Reference}
+\hypertarget{main_8py}{}\label{main_8py}\index{python\_project/main.py@{python\_project/main.py}}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacemain}{main}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacemain_ad83d9f7558fa374eee0c388536e2ae69}{main.\+setup\+\_\+serial\+\_\+port}} ()
+\begin{DoxyCompactList}\small\item\em Sets up the serial port for communication. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacemain_aff04ca38a49b8a0edd2a7d8d7ea11e9f}{main.\+send\+\_\+message}} (message, \mbox{\hyperlink{namespacemain_af0ddfa992c59910c3fdc03d171562f73}{ser}})
+\begin{DoxyCompactList}\small\item\em Sends a message through the serial port. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacemain_abaab7fd99a7f4c1c0899e278b975c29f}{main.\+receive\+\_\+message}} (\mbox{\hyperlink{namespacemain_af0ddfa992c59910c3fdc03d171562f73}{ser}})
+\begin{DoxyCompactList}\small\item\em Receives a single message from the serial port. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacemain_afd2ff425ab3c0093eaa918ff59e8f575}{main.\+receive\+\_\+multiple\+\_\+messages}} (\mbox{\hyperlink{namespacemain_af0ddfa992c59910c3fdc03d171562f73}{ser}}, count)
+\begin{DoxyCompactList}\small\item\em Receives multiple messages from the serial port. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacemain_a862704b116e100ced90f0e29ba4ef401}{main.\+user\+\_\+input\+\_\+thread}} (\mbox{\hyperlink{namespacemain_af0ddfa992c59910c3fdc03d171562f73}{ser}})
+\begin{DoxyCompactList}\small\item\em Handles user input in a separate thread. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacemain_a7d32896e1c4005214ef4d48197ce575b}{main.\+monitor\+\_\+incoming\+\_\+messages}} (\mbox{\hyperlink{namespacemain_af0ddfa992c59910c3fdc03d171562f73}{ser}})
+\begin{DoxyCompactList}\small\item\em Monitors incoming messages from the serial port. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacemain_a7aadaa184c3dd26efc36909fa306b8e2}{main.\+save\+\_\+game\+\_\+config}} (message)
+\begin{DoxyCompactList}\small\item\em Saves a game configuration message to an XML file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacemain_ab31c97de048c41d090433341bd913d43}{main.\+load\+\_\+game\+\_\+config}} (file\+\_\+path, \mbox{\hyperlink{namespacemain_af0ddfa992c59910c3fdc03d171562f73}{ser}})
+\begin{DoxyCompactList}\small\item\em Loads a game configuration from an XML file and sends it through the serial port. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+str \mbox{\hyperlink{namespacemain_afefe34c5fb154acb0b5238979df4d09e}{main.\+CONFIG\+\_\+\+FILE}} = \textquotesingle{}config/game\+\_\+config.\+xml\textquotesingle{}
+\item 
+\mbox{\hyperlink{namespacemain_af0ddfa992c59910c3fdc03d171562f73}{main.\+ser}} = \mbox{\hyperlink{namespacemain_ad83d9f7558fa374eee0c388536e2ae69}{setup\+\_\+serial\+\_\+port}}()
+\item 
+bool \mbox{\hyperlink{namespacemain_ac374d201da6068677320b0eaf35d1404}{main.\+can\+\_\+input}} = True
+\item 
+bool \mbox{\hyperlink{namespacemain_afe3247555051d316eb5c49679ac28c66}{main.\+exit\+\_\+program}} = False
+\item 
+\mbox{\hyperlink{namespacemain_a83307fce1cd0496d684a3b920d1e9976}{main.\+last\+\_\+received\+\_\+time}} = time.\+time()
+\item 
+\mbox{\hyperlink{namespacemain_a7a716e67103ba3211a4e0eac4b5e3430}{main.\+target}}
+\item 
+\mbox{\hyperlink{namespacemain_a96c1b07550ef798720d8504ce8d2a52f}{main.\+monitor\+\_\+incoming\+\_\+messages}}
+\item 
+\mbox{\hyperlink{namespacemain_a10926d7b7053badc9647defe0abb8adc}{main.\+args}}
+\item 
+\mbox{\hyperlink{namespacemain_a092c6a8193147833d5a33663dc4188a1}{main.\+daemon}}
+\item 
+\mbox{\hyperlink{namespacemain_a80a3a00ad4f369c8724763841f2a05b6}{main.\+user\+\_\+input\+\_\+thread}}
+\end{DoxyCompactItemize}

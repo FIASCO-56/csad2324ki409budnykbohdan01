@@ -8,6 +8,12 @@ CONFIG_FILE = 'config/game_config.xml'
 
 
 def setup_serial_port():
+    """!
+    @brief Sets up the serial port for communication.
+    @details Prompts the user to enter the serial port name and configures the port
+             with a baud rate of 9600 and a timeout of 1 second.
+    @return Configured serial.Serial object.
+    """
     try:
         port = input("Enter the serial port (e.g., /dev/ttyUSB0 or COM3): ")
         return serial.Serial(port, 9600, timeout=1)
@@ -17,6 +23,12 @@ def setup_serial_port():
 
 
 def send_message(message, ser):
+    """!
+    @brief Sends a message through the serial port.
+    @details Encodes the message as bytes and writes it to the serial port.
+    @param message The string message to send.
+    @param ser The serial port object to send the message through.
+    """
     try:
         ser.write((message + '\n').encode())
     except serial.SerialException as e:
@@ -24,6 +36,12 @@ def send_message(message, ser):
 
 
 def receive_message(ser):
+    """!
+    @brief Receives a single message from the serial port.
+    @details Reads a line of input from the serial port, decodes it to UTF-8, and strips whitespace.
+    @param ser The serial port object to read from.
+    @return The received string message or None if an error occurs.
+    """
     try:
         received = ser.readline().decode('utf-8', errors='ignore').strip()
         if received:
@@ -34,16 +52,12 @@ def receive_message(ser):
         return None
 
 
-def receive_multiple_messages(ser, count):
-    messages = []
-    for _ in range(count):
-        message = receive_message(ser)
-        if message:
-            messages.append(message)
-    return messages
-
-
 def user_input_thread(ser):
+    """!
+    @brief Handles user input in a separate thread.
+    @details Reads commands from the user, processes 'exit' and 'load' commands, and sends messages to the serial port.
+    @param ser The serial port object to communicate with.
+    """
     global can_input
     while True:
         if can_input:
@@ -61,6 +75,11 @@ def user_input_thread(ser):
 
 
 def monitor_incoming_messages(ser):
+    """!
+    @brief Monitors incoming messages from the serial port.
+    @details Continuously reads messages, updates the last received time, and saves XML configurations.
+    @param ser The serial port object to monitor.
+    """
     global can_input
     global last_received_time
     while not exit_program:
@@ -70,11 +89,15 @@ def monitor_incoming_messages(ser):
             if not can_input:
                 can_input = True
             if received.startswith("<"):
-                print(f"Received XML: {received}")
-                save_game_config(received) 
+                save_game_config(received)
 
 
 def save_game_config(message):
+    """!
+    @brief Saves a game configuration message to an XML file.
+    @details Writes the received XML message to a predefined file location.
+    @param message The XML string to save.
+    """
     try:
         with open(CONFIG_FILE, 'w') as f:
             f.write(message)
@@ -84,34 +107,36 @@ def save_game_config(message):
 
 
 def load_game_config(file_path, ser):
+    """!
+    @brief Loads the game configuration from a file and sends it over serial.
+    @param file_path The path to the configuration file to load.
+    @param ser The serial.Serial object for communication.
+    @details This function reads the content of the configuration file and sends it over the serial port.
+    @exception Will print an error message if the file cannot be loaded.
+    """
     try:
         if os.path.exists(file_path):
-            tree = ET.parse(file_path)
-            root = tree.getroot()
+            with open(file_path, 'r') as f:
+                xml_content = f.read()
 
-            game_mode = int(root.find("GameMode").text) if root.find("GameMode") is not None else 0
-            player1_symbol = root.find("Player1Symbol").text if root.find("Player1Symbol") is not None else "X"
-            player2_symbol = root.find("Player2Symbol").text if root.find("Player2Symbol") is not None else "O"
+            print("Loaded XML content:")
+            print(xml_content)
 
-            print(f"Game Mode: {game_mode}")
-            print(f"Player 1 Symbol: {player1_symbol}")
-            print(f"Player 2 Symbol: {player2_symbol}")
-
-            xml_message = f"<GameConfig><GameMode>{game_mode}</GameMode>"
-            xml_message += f"<Player1Symbol>{player1_symbol}</Player1Symbol>"
-            xml_message += f"<Player2Symbol>{player2_symbol}</Player2Symbol></GameConfig>"
-
-            print(xml_message)
-
-            send_message(xml_message, ser)
+            send_message(xml_content, ser)
         else:
             print("Configuration file not found. Please provide a valid path.")
     except Exception as e:
         print(f"Error loading configuration: {e}")
 
 
-if __name__ == "__main__":
+def main():
+    """!
+    @brief Main function to initialize serial communication and handle threads.
+    @details This function sets up the serial communication, starts the threads for monitoring incoming messages and handling user input, and manages the program loop.
+    """
+    global can_input, exit_program  # Ensure variables are accessible in tests
     ser = setup_serial_port()
+
     can_input = True
     exit_program = False
     last_received_time = time.time()
@@ -131,3 +156,6 @@ if __name__ == "__main__":
         if ser.is_open:
             print("Closing serial port...")
             ser.close()
+
+if __name__ == "__main__":
+    main()
